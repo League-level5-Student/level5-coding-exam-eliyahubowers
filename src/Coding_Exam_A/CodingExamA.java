@@ -31,11 +31,12 @@ public class CodingExamA {
 		for(int i = 0 ; i < r.length; i++) {
 			r[i] = new Robot();
 			r[i].penDown();
-			r[i].setX((i-(12*increment))*200);
-			r[i].setY(increment*200);
-			if(increment%12 == 0) {
+			r[i].setX(((i*200)-(increment*12*200))+100);
+			r[i].setY((increment*200)+100);
+			if((i+1)%12 == 0) {
 				increment++;
 			}
+			r[i].setSpeed(1000);
 		}
 		
 		s = JOptionPane.showInputDialog("What Color: ( red , green , blue)");
@@ -66,15 +67,20 @@ public class CodingExamA {
 		Thread[] t = new Thread[r.length];
 		
 		for(int i = 0; i < r.length; i++) {
+			int l = i;
 			t[i] = new Thread(() -> {
 				for(int j = 0; j < sides; j++) {
-					r[i].move(30);
-					r[i].turn(angle);
+					r[l].move(100);				
+					r[l].turn(angle);
 				}
 			});
 		}
 		
+		System.out.println("now");
 		
+		for(int i = 0; i < t.length; i++) {
+			t[i].start();
+		}
 		
 	}
 }

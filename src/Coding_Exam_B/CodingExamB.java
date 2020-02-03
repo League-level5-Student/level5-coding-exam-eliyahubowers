@@ -24,8 +24,27 @@ public class CodingExamB {
 		 *    into one large String. The string will also state the file name and
 		 *    the line number for where each TODO was found. 
 		*/
-		
-		return "";
+		String ret = "";
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(fileName));
+			String c = br.readLine();
+			while(c.length() > 0) {
+				for(int i = 0; i < c.length()-6; i++) {
+					if(c.contains("//TODO:")) {
+						ret += c + "\n";
+					}
+				}
+				ret += "line\n";
+				c = br.readLine();
+			}
+			br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		ret += "\n";
+		return ret;
 	}
 	
 	public static void main(String[] args) {
@@ -37,6 +56,15 @@ public class CodingExamB {
 		/*
 		 * 2. Write the finalLogString to a file called TODO_Log.txt. The file should match TODO_Log_example.txt. 
 		 */
-
+		
+		try {
+			FileWriter fw = new FileWriter("src/Coding_Exam_B/TODO_Log.txt");
+			fw.write(finalLogString);
+			fw.write("yay!");
+			fw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 }
