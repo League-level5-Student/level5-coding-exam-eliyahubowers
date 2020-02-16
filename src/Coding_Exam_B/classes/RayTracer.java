@@ -1,14 +1,15 @@
 package Coding_Exam_B.classes;
+
 import java.awt.Color;
 
 public class RayTracer {
-
-	public static Color backgroundColor = new Color(0);
-	
+	public static Color backgroundColor = new Color(0);	
 	public RayTracer(int width, int height, Camera camera) {
+		
 		Color[][] pixels = new Color[width][height];
 		int hWidth = width / 2;
 		int hHeight = height / 2;
+		
 		for (int i = 0; i < pixels.length; i++) {
 			for (int j = 0; j < pixels[i].length; j++) {
 				float frameX = i;
@@ -24,7 +25,7 @@ public class RayTracer {
 		}
 		//TODO: Display the final image
 	}
-
+	
 	public static void main(String[] args) {
 		//TODO: Create a Scene
 	}

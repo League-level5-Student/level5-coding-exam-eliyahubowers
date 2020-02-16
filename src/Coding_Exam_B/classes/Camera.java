@@ -1,3 +1,4 @@
+
 package Coding_Exam_B.classes;
 
 public class Camera {
